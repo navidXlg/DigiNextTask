@@ -23,7 +23,7 @@ export default function TodoContextProvider({
 
   const clearTodoItem = (todoId: number) => {
     const newTodoItems: ITodo[] = todoItems.filter(
-      (item) => item.id === todoId
+      (item) => item.id !== todoId
     );
     setTodoItems(newTodoItems);
   };
@@ -57,9 +57,6 @@ export default function TodoContextProvider({
   );
 }
 
-// export function useTodoContext(): ITodoContextType | null {
-//   return useContext(TodoContext);
-// }
 export const useTodoContext = (): ITodoContextType | null => {
   const context = useContext(TodoContext);
   return context;

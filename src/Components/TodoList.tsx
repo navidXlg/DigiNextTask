@@ -3,13 +3,13 @@ import { AddItem } from "./AddItem";
 import { TodoItem } from "./TodoItem";
 
 export function TodoList(): JSX.Element {
-  const contexItems = useTodoContext();
-  console.log(contexItems);
+  const todoContext = useTodoContext();
   return (
     <div>
+      <p>Todo list Application</p>
       <AddItem />
-      {contexItems?.todoItems?.map((item) => (
-        <TodoItem todo={item} />
+      {todoContext?.todoItems?.map((item) => (
+        <TodoItem todo={item} key={item.id} />
       ))}
     </div>
   );
