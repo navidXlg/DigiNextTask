@@ -1,10 +1,10 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 import { ITodo, ITodoContextProviderProps, ITodoContextType } from "../types";
 
-const TodoContext = createContext<ITodoContextType | null>(null);
+export const TodoContext = createContext<ITodoContextType | null>(null);
 
-export function TodoContextProvider({
+export default function TodoContextProvider({
   children,
 }: ITodoContextProviderProps): JSX.Element {
   const [todoItems, setTodoItems] = useState<ITodo[]>([]);
@@ -56,3 +56,11 @@ export function TodoContextProvider({
     </TodoContext.Provider>
   );
 }
+
+// export function useTodoContext(): ITodoContextType | null {
+//   return useContext(TodoContext);
+// }
+export const useTodoContext = (): ITodoContextType | null => {
+  const context = useContext(TodoContext);
+  return context;
+};
